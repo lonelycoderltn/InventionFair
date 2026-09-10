@@ -16,6 +16,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/", "destination": "/media-optimized.html" }
+    { "source": "/", "destination": "/delete-layer.html" }
   ]
 }

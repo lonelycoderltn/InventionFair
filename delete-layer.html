@@ -1,11 +1,10 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Science Fair 2026</title></head><body><p style="font:15px system-ui;padding:24px">Loading Science Fair…</p><script>
 (async()=>{try{
-const r=await fetch('/media-optimized.html?deleteLayer=20260910-2',{cache:'no-store'});if(!r.ok)throw new Error('Could not load the main page.');
+const r=await fetch('/media-optimized.html?deleteLayer=20260910-3',{cache:'no-store'});if(!r.ok)throw new Error('Could not load the main page.');
 let h=await r.text();
-if(!h.includes('document.open();document.write(h);document.close();'))throw new Error('Main page loader changed; delete layer stopped safely.');
-const needle='document.open();document.write(h);document.close();';
-const replacement="h=h.replace('</body>','<script src=\"/delete.js?v=20260910-2\"></scr'+'ipt></body>');"+needle;
-h=h.replace(needle,replacement);
+const needle='let h=await r.text();';
+if(!h.includes(needle))throw new Error('Main page loader changed; delete layer stopped safely.');
+h=h.replace(needle,needle+"\nh=h.replace('</body>','<script src=\"/delete.js?v=20260910-3\"></scr'+'ipt></body>');");
 document.open();document.write(h);document.close();
 }catch(e){document.body.innerHTML='<pre style="font:14px system-ui;padding:24px;white-space:pre-wrap">Science Fair could not load. '+String(e.message||e)+'</pre>'}})();
 </script></body></html>

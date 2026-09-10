@@ -1,0 +1,81 @@
+/* Mobile polish for Science Fair 2026 */
+html{overflow-x:hidden;-webkit-text-size-adjust:100%}
+body{min-width:0;overflow-x:hidden}
+button,input,textarea{touch-action:manipulation}
+@media (max-width:700px){
+  header{height:64px;padding:0 16px;gap:10px}
+  .brand{font-size:16px;white-space:nowrap}
+  .mobile-menu{display:grid;place-items:center;flex:0 0 40px;width:40px;height:40px;font-size:20px;color:#dbe7f4}
+  .mobile-panel{top:64px;padding:10px 16px;gap:8px}
+  .mobile-panel button{min-height:44px;padding:10px 12px;font-size:15px}
+
+  main{width:calc(100% - 32px);padding:34px 0 56px}
+  .intro{margin-bottom:22px}
+  .intro h1{font-size:34px;line-height:1.08;margin:10px 0 8px}
+  .intro p{font-size:14px;line-height:1.55}
+  .eyebrow{font-size:9px}
+
+  .search-wrap{margin-bottom:30px}
+  .search{height:48px;padding-left:14px;padding-right:44px;font-size:16px}
+  .clear{right:7px;top:7px;width:34px;height:34px}
+
+  .section-head{gap:8px;margin-bottom:12px}
+  .section-head h2{font-size:19px;white-space:nowrap}
+  .line{min-width:10px}
+  .count{font-size:11px;white-space:nowrap}
+
+  .grid{grid-template-columns:1fr;gap:14px}
+  .card{width:100%}
+  .img{height:min(52vw,210px);min-height:150px}
+  .card-body{padding:16px}
+  .card h3{font-size:18px}
+  .card-foot{gap:10px;align-items:center}
+  .view{min-height:40px;padding:8px 10px}
+
+  .overlay{z-index:30;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .ph{height:64px;padding:0 16px}
+  .back{min-height:44px;padding:8px 0;font-size:15px}
+  .pc{width:calc(100% - 32px);padding:20px 0 56px}
+  .detail-img{height:min(62vw,280px);min-height:190px}
+  .caption{font-size:11px;margin:8px 0 18px;gap:3px}
+  .video{height:min(54vw,240px);min-height:180px;margin-bottom:24px}
+  .detail h1{font-size:30px;line-height:1.12}
+  .dmeta{font-size:14px}
+  .sec{padding:14px 0}
+  .sec h2{font-size:11px}
+  .sec p{font-size:14px;line-height:1.6;overflow-wrap:anywhere}
+  .edit-area{margin-top:24px;padding-top:16px}
+  .edit-area .edit,
+  .edit-area [data-delete-project]{display:block;width:100%;min-height:44px;margin:8px 0 0}
+  .edit-note{font-size:11px}
+
+  .bg{padding:12px;align-items:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .dlg{width:100%;max-height:none;margin:12px 0;border-radius:5px}
+  .dh{padding:15px 16px}
+  .dh h2{font-size:18px}
+  .close{width:40px;height:40px;flex:0 0 40px}
+  .db{padding:16px}
+  .notice{font-size:12px}
+  .form{gap:14px}
+  .field label{font-size:12px}
+  .input{height:46px;font-size:16px}
+  .textarea{min-height:110px;font-size:16px}
+  .media{grid-template-columns:1fr;gap:10px}
+  .box{padding:12px}
+  .upload{min-height:44px}
+  .actions{gap:8px;margin-top:18px;padding-top:14px}
+  .actions button{width:100%;min-height:44px}
+  .pin-dialog,.discard{width:100%}
+  .pin{font-size:20px}
+
+  footer{margin-top:42px;padding-top:14px;line-height:1.5}
+}
+
+@media (max-width:380px){
+  main{width:calc(100% - 24px)}
+  .pc{width:calc(100% - 24px)}
+  .ph{padding:0 12px}
+  .intro h1{font-size:30px}
+  .section-head h2{font-size:18px}
+  .card-body{padding:14px}
+}

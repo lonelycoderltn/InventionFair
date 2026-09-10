@@ -12,6 +12,9 @@ const newInputs="$('uploadImage').onclick=()=>$('imageFile').click();$('uploadVi
 if(!h.includes(oldInputs))throw new Error('Media input code changed; patch stopped safely.');h=h.replace(oldInputs,newInputs);
 const oldForm="let row=result.project;let imageUrl=null,videoUrl=null;if(selectedImage)imageUrl=await uploadFile(selectedImage,row.id);if(selectedVideo)videoUrl=await uploadFile(selectedVideo,row.id);";
 const newForm="let row=result.project;if(selectedVideo&&selectedVideoDuration>MAX_VIDEO_SECONDS+1e-6)throw new Error('Videos must be 2 minutes (120 seconds) or shorter.');let imageUrl=null,videoUrl=null;if(selectedImage){let imageFile=selectedImage;if($('autoOptimize')?.checked){try{imageFile=await optimizeImage(imageFile)}catch(e){throw new Error(e.message||'Image optimization failed.')}}imageUrl=await uploadFile(imageFile,row.id)}if(selectedVideo)videoUrl=await uploadFile(selectedVideo,row.id);";
-if(!h.includes(oldForm))throw new Error('Form upload code changed; patch stopped safely.');h=h.replace(oldForm,newForm);document.open();document.write(h);document.close();
+if(!h.includes(oldForm))throw new Error('Form upload code changed; patch stopped safely.');h=h.replace(oldForm,newForm);
+// Load the delete UI in the final page, after all wrapper changes are complete.
+h=h.replace('</body>','<script src="/delete-ui.js?v=20260910-1"></scr'+'ipt></body>');
+document.open();document.write(h);document.close();
 }catch(e){document.body.innerHTML='<pre style="font:14px system-ui;padding:24px;white-space:pre-wrap">Science Fair could not load. '+String(e.message||e)+'</pre>'}})();
 </script></body></html>

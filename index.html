@@ -143,10 +143,9 @@
     .section-heading {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap 13px;
       margin-bottom: 18px;
     }
-
     .section-heading h2 { margin: 0; font-size: 20px; }
     .section-heading .line { height: 1px; background: var(--border); flex: 1; }
     .count { color: var(--muted); font-size: 13px; }
@@ -166,13 +165,13 @@
     }
 
     .card:hover {
-      transform: translateY(-2px);
+      transform: translateY(r2.0);
       border-color: #cfd6df;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 8 20px rgba(0, 0, 0, 0.04);
     }
 
     .card-image {
-      height: 190px;
+       height: 190px;
       background: var(--blue-soft);
       display: flex;
       align-items: center;
@@ -338,6 +337,15 @@
     .detail-section { margin-top: 24px; }
     .detail-section h3 { margin: 0 0 7px; font-size: 15px; }
     .detail-section p { margin: 0; color: #4b5563; white-space: pre-line; }
+    .video-section { margin-top: 28px; }
+    .video-section h3 { margin: 0 0 7px; font-size: 15px; }
+    .project-video {
+      width: 100%;
+      display: block;
+      max-height: 520x;
+      background: #111827;
+      border-radius: 7px;
+    }
 
     .form-grid {
       display: grid;
@@ -346,7 +354,7 @@
     }
 
     .field { display: flex; flex-direction: column; gap: 7px; }
-    .field.full { grid-column: 1 / -1; }
+    .field .full { grid-column: 1 / -1; }
     .field label { font-size: 13px; font-weight: 700; }
 
     .form-actions {
@@ -365,8 +373,8 @@
       border: 1px solid var(--border-strong);
     }
 
-    .secondary { background: #fff; color: #4b5563; }
-    .secondary:hover { background: #f9fafb; }
+    .secondary { background: #fff; color: #x4b5563; }
+    .secondary:hover { background: #f9faf9; }
 
     .primary-button { background: var(--blue); color: #fff; border-color: var(--blue); }
     .primary-button:hover { background: #1d4ed8; }
@@ -378,303 +386,7 @@
       display: none;
     }
 
-    @media (max-width: 700px) {
-      .site-header { padding: 0 5%; }
-      .page { width: 90%; padding-top: 48px; }
-      .toolbar { grid-template-columns: 1fr; }
-      .projects { grid-template-columns: 1fr; }
-      .form-grid { grid-template-columns: 1fr; }
-      .field.full { grid-column: auto; }
-    }
-  </style>
-</head>
-<body>
-  <header class="site-header">
-    <button class="brand" id="homeButton">Science Fair 2026</button>
-    <nav class="nav" aria-label="Main navigation">
-      <button class="nav-button" id="projectsButton">Projects</button>
-      <button class="nav-button primary" id="submitButton">Submit Project</button>
-    </nav>
-  </header>
-
-  <main class="page" id="homeView">
-    <section class="intro">
-      <div class="eyebrow">Student projects</div>
-      <h1>Student Science Fair</h1>
-      <p>Explore the projects being presented by our students.</p>
-    </section>
-
-    <section class="toolbar" aria-label="Project search and filter">
-      <input class="input" id="searchInput" type="search" placeholder="Search projects..." aria-label="Search projects" />
-      <select class="select" id="subjectFilter" aria-label="Filter by subject">
-        <option value="all">All subjects</option>
-        <option value="Biology">Biology</option>
-        <option value="Chemistry">Chemistry</option>
-        <option value="Physics">Physics</option>
-        <option value="Environmental Science">Environmental Science</option>
-      </select>
-    </section>
-
-    <section>
-      <div class="section-heading">
-        <h2>Projects</h2>
-        <div class="line"></div>
-        <div class="count" id="projectCount"></div>
-      </div>
-      <div class="projects" id="projectGrid"></div>
-    </section>
-
-    <footer class="footer">Science Fair 2026 ¬∑ Student project showcase</footer>
-  </main>
-
-  <div class="modal-backdrop" id="detailModal" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
-      <div class="modal-header">
-        <h2 id="detailTitle">Project</h2>
-        <button class="close" data-close="detailModal" aria-label="Close">√ó</button>
-      </div>
-      <div class="modal-body" id="detailBody"></div>
-    </div>
-  </div>
-
-  <div class="modal-backdrop" id="submitModal" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="submitTitle">
-      <div class="modal-header">
-        <h2 id="submitTitle">Submit a Project</h2>
-        <button class="close" data-close="submitModal" aria-label="Close">√ó</button>
-      </div>
-      <div class="modal-body">
-        <form id="projectForm">
-          <div class="form-grid">
-            <div class="field">
-              <label for="name">Student name</label>
-              <input class="input" id="name" required maxlength="60" placeholder="Your name" />
-            </div>
-            <div class="field">
-              <label for="subject">Subject</label>
-              <select class="select" id="subject" required>
-                <option value="">Choose a subject</option>
-                <option>Biology</option>
-                <option>Chemistry</option>
-                <option>Physics</option>
-                <option>Environmental Science</option>
-              </select>
-            </div>
-            <div class="field full">
-              <label for="title">Project title</label>
-              <input class="input" id="title" required maxlength="100" placeholder="e.g. How Plants Grow" />
-            </div>
-            <div class="field full">
-              <label for="question">Research question</label>
-              <textarea class="textarea" id="question" required maxlength="500" placeholder="What are you investigating?"></textarea>
-            </div>
-            <div class="field full">
-              <label for="hypothesis">Hypothesis</label>
-              <textarea class="textarea" id="hypothesis" required maxlength="500" placeholder="What do you predict will happen?"></textarea>
-            </div>
-            <div class="field full">
-              <label for="method">Method</label>
-              <textarea class="textarea" id="method" required maxlength="1000" placeholder="Briefly explain how you tested it."></textarea>
-            </div>
-            <div class="field full">
-              <label for="results">Results</label>
-              <textarea class="textarea" id="results" required maxlength="1000" placeholder="What did you find?"></textarea>
-            </div>
-            <div class="field full">
-              <label for="conclusion">Conclusion</label>
-              <textarea class="textarea" id="conclusion" required maxlength="1000" placeholder="What does your result mean?"></textarea>
-            </div>
-          </div>
-          <div class="error" id="formError"></div>
-          <div class="form-actions">
-            <button type="button" class="secondary" data-close="submitModal">Cancel</button>
-            <button type="submit" class="primary-button">Add project</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const projects = [
-      {
-        id: 1,
-        title: "Test",
-        name: "Test",
-        subject: "Test",
-        question: "Test",
-        hypothesis: "Test",
-        method: "Test",
-        results: "Test",
-        conclusion: "Test"
-      }
-    ];
-
-    const grid = document.getElementById("projectGrid");
-    const searchInput = document.getElementById("searchInput");
-    const subjectFilter = document.getElementById("subjectFilter");
-    const projectCount = document.getElementById("projectCount");
-
-    const detailModal = document.getElementById("detailModal");
-    const detailTitle = document.getElementById("detailTitle");
-    const detailBody = document.getElementById("detailBody");
-    const submitModal = document.getElementById("submitModal");
-    const form = document.getElementById("projectForm");
-    const formError = document.getElementById("formError");
-
-    function renderProjects() {
-      const search = searchInput.value.trim().toLowerCase();
-      const subject = subjectFilter.value;
-
-      const filtered = projects.filter(project => {
-        const matchesSubject = subject === "all" || project.subject === subject;
-        const text = `${project.title} ${project.name} ${project.subject}`.toLowerCase();
-        return matchesSubject && text.includes(search);
-      });
-
-      projectCount.textContent = `${filtered.length} ${filtered.length === 1 ? "project" : "projects"}`;
-
-      if (!filtered.length) {
-        grid.innerHTML = `<div class="empty">No projects match your search.</div>`;
-        return;
-      }
-
-      grid.innerHTML = filtered.map(project => `
-        <article class="card">
-          <div class="card-image"><span>PROJECT IMAGE</span></div>
-          <div class="card-content">
-            <div class="tag">${escapeHtml(project.subject)}</div>
-            <h3>${escapeHtml(project.title)}</h3>
-            <p class="meta">${escapeHtml(project.name)} ¬∑ ${escapeHtml(project.subject)}</p>
-            <button class="view-button" data-project-id="${project.id}">View project ‚Üí</button>
-          </div>
-        </article>
-      `).join("");
-
-      grid.querySelectorAll("[data-project-id]").forEach(button => {
-        button.addEventListener("click", () => openProject(Number(button.dataset.projectId)));
-      });
-    }
-
-    function openProject(id) {
-      const project = projects.find(item => item.id === id);
-      if (!project) return;
-
-      detailTitle.textContent = project.title;
-      detailBody.innerHTML = `
-        <div class="detail-image">PROJECT IMAGE</div>
-        <div class="tag">${escapeHtml(project.subject)}</div>
-        <div class="detail-meta">${escapeHtml(project.name)} ¬∑ ${escapeHtml(project.subject)}</div>
-
-        <div class="detail-section">
-          <h3>Research Question</h3>
-          <p>${escapeHtml(project.question)}</p>
-        </div>
-        <div class="detail-section">
-          <h3>Hypothesis</h3>
-          <p>${escapeHtml(project.hypothesis)}</p>
-        </div>
-        <div class="detail-section">
-          <h3>Method</h3>
-          <p>${escapeHtml(project.method)}</p>
-        </div>
-        <div class="detail-section">
-          <h3>Results</h3>
-          <p>${escapeHtml(project.results)}</p>
-        </div>
-        <div class="detail-section">
-          <h3>Conclusion</h3>
-          <p>${escapeHtml(project.conclusion)}</p>
-        </div>
-      `;
-
-      openModal(detailModal);
-    }
-
-    function openModal(modal) {
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-    }
-
-    function closeModal(modal) {
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden", "true");
-      if (!document.querySelector(".modal-backdrop.open")) document.body.style.overflow = "";
-    }
-
-    function escapeHtml(value) {
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
-
-    searchInput.addEventListener("input", renderProjects);
-    subjectFilter.addEventListener("change", renderProjects);
-
-    document.getElementById("submitButton").addEventListener("click", () => openModal(submitModal));
-    document.getElementById("projectsButton").addEventListener("click", () => {
-      document.getElementById("projectGrid").scrollIntoView({ behavior: "smooth" });
-    });
-    document.getElementById("homeButton").addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
-
-    document.querySelectorAll("[data-close]").forEach(button => {
-      button.addEventListener("click", () => closeModal(document.getElementById(button.dataset.close)));
-    });
-
-    [detailModal, submitModal].forEach(modal => {
-      modal.addEventListener("click", event => {
-        if (event.target === modal) closeModal(modal);
-      });
-    });
-
-    document.addEventListener("keydown", event => {
-      if (event.key === "Escape") {
-        document.querySelectorAll(".modal-backdrop.open").forEach(closeModal);
-      }
-    });
-
-    form.addEventListener("submit", event => {
-      event.preventDefault();
-      formError.style.display = "none";
-
-      const studentName = document.getElementById("name").value.trim();
-      const subject = document.getElementById("subject").value;
-      const title = document.getElementById("title").value.trim();
-      const question = document.getElementById("question").value.trim();
-      const hypothesis = document.getElementById("hypothesis").value.trim();
-      const method = document.getElementById("method").value.trim();
-      const results = document.getElementById("results").value.trim();
-      const conclusion = document.getElementById("conclusion").value.trim();
-
-      if (![studentName, subject, title, question, hypothesis, method, results, conclusion].every(Boolean)) {
-        formError.textContent = "Please fill in every field.";
-        formError.style.display = "block";
-        return;
-      }
-
-      projects.unshift({
-        id: Date.now(),
-        title,
-        name: studentName,
-        subject,
-        question,
-        hypothesis,
-        method,
-        results,
-        conclusion
-      });
-
-      form.reset();
-      closeModal(submitModal);
-      renderProjects();
-      window.scrollTo({ top: document.querySelector(".section-heading").offsetTop - 90, behavior: "smooth" });
-    });
-
-    renderProjects();
-  </script>
-</body>
-</html>
+    @ôÁbjf±¬'máΩ4ß"µË^i◊´•ß]äx4Êñ†{ù∂t•ß]äx-¢û<ßh¢V⁄Æ
+‚v◊¶¶V≠y %∫iÏ’˙ÈÆàﬁr€ Æ'mzjej◊ú¢[¶ûÕ_≠˙+ö
+‚v
+‚v◊¶¶V≠y %∫iÏ’˙ﬂâÈ]~ÈeÇ∏ùrânövÆ∂èÏ∑)^˛öu∫ öuÍ‹ï´,≤+^ÖÊùz∂Ó∂⁄'rV¨±∫⁄ùÿùÜâûÎm¢túâÈ‹xV¢Øm6ÎˆÓ∂⁄'ù´‹ï´,ù´⁄Æ&•i∑•1®ßù´‚Å´b¢vÓ∂⁄'rV¨≤vØnÎm¢xù¶∫#yÀlÎm¢sÎ¢7ú∂œ€∫€hùª≠∂â‹ï´,ù´€∫€hûö‚ô™Úâ
